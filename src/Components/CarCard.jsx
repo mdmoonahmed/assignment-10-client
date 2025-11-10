@@ -3,7 +3,8 @@ import React from 'react';
 const CarCard = ({car}) => {
     return (
         <div>
-            <img src={car.imageURL} alt="" />
+            <h1>{car.carName}</h1>
+            <img className='h-80 w-100 object-contain' src={car.imageURL} alt="" />
         </div>
     );
 };
