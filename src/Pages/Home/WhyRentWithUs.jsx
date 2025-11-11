@@ -26,10 +26,10 @@ const WhyRentWithUs = () => {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-10 md:py-20 ">
       <div className="max-w-6xl mx-auto text-center px-4">
-        <h2 className="text-4xl font-bold text-gray-800 mb-3">Why Rent With Us</h2>
-        <p className="text-gray-600 mb-12">
+        <h2 className=" text-3xl sm:text-4xl font-bold text-white heading-text mb-3">Why <span className="text-primary">Rent</span> With Us</h2>
+        <p className="text-secondary mb-7 md:mb-12">
           Experience the easiest and most reliable car rental service in Bangladesh
         </p>
 
