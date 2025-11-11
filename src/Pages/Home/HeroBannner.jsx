@@ -28,9 +28,9 @@ const HeroBanner = () => {
               </p>
               <a
                 href="/browse-cars"
-                className="bg-red-500 hover:bg-red-600 px-6 py-3 rounded-lg font-semibold"
+                className="btn-hover bg-primary z-1 group relative overflow-hidden rounded-lg px-6 py-3 text-lg font-semibold transition duration-300 ease-out text-black"
               >
-                Browse Cars
+                <span className="z-10 relative">Browse Cars</span>
               </a>
             </div>
           </div>
@@ -53,9 +53,9 @@ const HeroBanner = () => {
               </p>
               <a
                 href="/browse-cars"
-                className="bg-yellow-500 hover:bg-yellow-600 px-6 py-3 rounded-lg font-semibold"
+                className="btn-hover bg-red-500 z-1 group relative overflow-hidden rounded-lg px-6 py-3 text-lg font-semibold transition duration-300 ease-out text-black"
               >
-                Book Now
+               <span className="z-10 relative">Book Now</span>
               </a>
             </div>
           </div>
@@ -79,9 +79,9 @@ const HeroBanner = () => {
               </p>
               <a
                 href="/add-car"
-                className="bg-green-500 hover:bg-green-600 px-6 py-3 rounded-lg font-semibold"
+                className="btn-hover bg-green-500 z-1 group relative overflow-hidden rounded-lg px-6 py-3 text-lg font-semibold transition duration-300 ease-out text-black"
               >
-                Add Your Car
+                <span className="z-10 relative">Add Your Car</span>
               </a>
             </div>
           </div>

@@ -1,12 +1,12 @@
 const FeaturedCars = ({ latestCars }) => {
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="text-center mb-10">
-        <h2 className="text-4xl font-bold text-gray-800">Featured <span className="text-primary">Cars</span></h2>
+    <section className="py-10 md:py-16 bg-gray-50">
+      <div className="text-center mb-6 md:mb-10">
+        <h2 className="text-2xl md:text-4xl font-bold text-gray-800">Featured <span className="text-primary">Cars</span></h2>
         <p className="text-secondary mt-2">Explore our newest additions available for rent</p>
       </div>
 
-      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8 px-4">
         {latestCars.map((car) => (
           <div key={car._id} className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden">
             <img src={car.imageURL} alt={car.carName} className="w-full h-56 object-cover" />
