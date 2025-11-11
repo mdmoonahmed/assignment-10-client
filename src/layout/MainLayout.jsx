@@ -6,17 +6,20 @@ import { Outlet } from 'react-router';
 
 const MainLayout = () => {
     return (
-         <div>
-      <div className="max-w-7xl mx-auto">
-        <Navbar />
-        <div className="mt-4">
-          <Outlet />
+    <>
+      <div className=''>
+        <div className="sticky top-0 z-10">
+          <Navbar></Navbar>
         </div>
-        <Footer/>
+        <div className='overflow-x-hidden'>
+          <Outlet></Outlet>
+        </div>
+        <div>
+          <Footer></Footer>
+        </div>
       </div>
-
-      <ToastContainer/>
-    </div>
+      <ToastContainer></ToastContainer>
+    </>
     );
 };
 

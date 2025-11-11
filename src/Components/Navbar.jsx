@@ -1,7 +1,11 @@
 import React from "react";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const handleLogo = () => {
+        navigate('/');
+  }
   const navLinks = (
     <>
       <li>
@@ -22,7 +26,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar bg-base-200 shadow-sm">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -49,7 +53,7 @@ const Navbar = () => {
            {navLinks}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <a onClick={handleLogo} className="btn btn-ghost text-xl heading-text">Rent <span className=" italic"><span className="text-primary">W</span>heel</span></a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">

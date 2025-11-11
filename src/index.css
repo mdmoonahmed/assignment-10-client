@@ -1,2 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 @import "tailwindcss";
 @plugin "daisyui";
+
+@plugin "daisyui/theme" {
+  name: "dark";
+  default: true;
+  --color-primary: #ff9100;
+  --color-secondary: #83838f;
+}
+
+
+  *{ 
+    font-family: "Inter", sans-serif;
+}
+
+.heading-text{
+     font-family: "Montserrat", sans-serif;
+     font-weight: bold;
+}
+
+.navbar .active {
+  color: #ffffff;
+  font-weight: bold;
+  border: 1px solid #CAC8C8FF;
+  border-radius: 20px;
+  background: rgb(245, 141, 4);
+}
+
+.swiper-pagination-bullet {
+  background: white !important;
+  opacity: 0.6;
+}
+
+.swiper-pagination-bullet-active {
+  background: #ef9744 !important; /* red color for active dot */
+  opacity: 1;
+}
+
+
+@layer utilities {
+  @keyframes zoomBg {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+  }
+  .animate-zoomBg {
+    animation: zoomBg 4s ease-in-out forwards;
+  }
+}
