@@ -50,6 +50,16 @@
 }
 
 
+@layer utilities {
+  @keyframes zoomBg {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+  }
+  .animate-zoomImg:hover {
+    animation: zoomBg 3s ease-in-out infinite alternate;
+  }
+}
+
 /* button hover */
 .btn-hover::before {
     content: '';
