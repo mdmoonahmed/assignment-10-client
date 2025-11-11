@@ -1,3 +1,6 @@
+import { easeIn, easeInOut, motion } from "framer-motion";
+
+
 const FeaturedCars = ({ latestCars }) => {
   return (
     <section className="py-10 md:py-16 ">
@@ -7,8 +10,13 @@ const FeaturedCars = ({ latestCars }) => {
       </div>
 
       <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8 px-4">
-        {latestCars.map((car) => (
-          <div key={car._id} className="bg-white hover:scale-105 ease-in-out rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden">
+        {latestCars.map((car,index) => (
+          <motion.div 
+          initial={{ opacity: 0, y: 30, scale: 0.9}}
+          whileInView={{ opacity:1, y:0, scale: 1 }}
+          viewport={ { once: true}}
+          transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeInOut' }}
+          key={car._id} className="bg-white hover:scale-105 ease-in-out rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden">
             <img src={car.imageURL} alt={car.carName} className="w-full animate-zoomImg  h-56 object-cover" />
 
             <div className="p-5">
@@ -26,7 +34,7 @@ const FeaturedCars = ({ latestCars }) => {
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>
