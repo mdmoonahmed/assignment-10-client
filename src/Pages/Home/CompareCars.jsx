@@ -1,3 +1,5 @@
+import {  motion } from "framer-motion";
+import { Star } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const CompareCars = () => {
@@ -37,7 +39,12 @@ const CompareCars = () => {
 
   return (
     <section className="py-20 ">
-      <div className="max-w-6xl mx-auto px-4 text-center">
+      <motion.div 
+          initial={{ opacity: 0, x: 30, scale: 0.9}}
+          whileInView={{opacity:1, x:0 , scale: 1 }}
+          viewport={{ once: true}}
+          transition={{ duration: 0.5 , delay:   0.1}}
+      className="max-w-6xl mx-auto px-4 text-center">
         <h2 className="text-4xl font-bold mb-3 heading-text text-white">Compare <span className="text-primary">Cars</span></h2>
         <p className="text-secondary mb-10">
           Choose two cars from our collection to see how they compare.
@@ -72,7 +79,12 @@ const CompareCars = () => {
 
        
         {car1 && car2 ? (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-10 text-left">
+          <motion.div 
+          initial={{ opacity: 0, x: -30, scale: 0.9}}
+          whileInView={{opacity:1, x:0 , scale: 1 }}
+          viewport={{ once: true}}
+          transition={{ duration: 0.5 , delay:   0.1}}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-10 text-left">
             {[car1, car2].map((car, index) => (
               <div
                 key={index}
@@ -91,8 +103,8 @@ const CompareCars = () => {
                   <p className="text-green-600 font-semibold mb-2">
                     ৳{car.rentPricePerDay} / day
                   </p>
-                  <p className="text-yellow-500 mb-2">
-                    ⭐ {car.rating?.toFixed(1) || "N/A"} / 5
+                  <p className="text-yellow-500 mb-2 flex items-center">
+                    <Star height={18} className="fill-yellow-500"/> {car.rating?.toFixed(1) || "N/A"} / 5
                   </p>
                   <span
                     className={`inline-block px-3 py-1 text-sm rounded-full ${
@@ -119,13 +131,13 @@ const CompareCars = () => {
                 </div>
               </div>
             ))}
-          </div>
+          </motion.div>
         ) : (
           <p className="text-gray-500 mt-10">
             Select two cars above to compare their details.
           </p>
         )}
-      </div>
+      </motion.div>
     </section>
   );
 };
