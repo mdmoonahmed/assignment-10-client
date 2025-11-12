@@ -18,7 +18,6 @@ const Register = () => {
   });
   const [showPassword, setShowPassword] = useState(false);
 
-  // ✅ Validation logic
   const validate = (name, value) => {
     switch (name) {
       case "displayName":
@@ -70,8 +69,8 @@ const Register = () => {
           icon: "success",
           title: "Registration Successful 🎉",
           text: "Your account has been created successfully!",
-          background: "#1f2937", // dark gray
-          color: "#facc15", // yellow-500
+          background: "#1f2937", 
+          color: "#facc15", 
           confirmButtonColor: "#facc15",
         }).then(() => navigate("/"));
       })
@@ -83,7 +82,7 @@ const Register = () => {
             title: "Email Already Exists",
             text: "This email is already registered. Please try logging in.",
             background: "#1f2937",
-            color: "#f87171", // red tone for dark theme
+            color: "#f87171", 
             confirmButtonColor: "#facc15",
           });
         } else {
@@ -110,7 +109,7 @@ const Register = () => {
   };
 
   return (
-    <div className="flex items-center justify-center py-10 md:min-h-screen bg-gray-900 px-4 sm:px-6 md:px-8 animate-fadeIn">
+    <div className="flex items-center justify-center py-10 md:min-h-screen  bg-linear-to-r from-black via-gray-900 to-black px-4 sm:px-6 md:px-8 animate-fadeIn">
       <div className="w-full max-w-md bg-gray-800 rounded-2xl shadow-2xl p-6 sm:p-8 border border-gray-700">
         <h1 className="text-3xl sm:text-4xl font-bold text-yellow-500 text-center mb-6 sm:mb-8 animate-bounce">
           Register
