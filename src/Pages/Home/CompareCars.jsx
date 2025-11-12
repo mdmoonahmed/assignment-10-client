@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Star } from "lucide-react";
+import { Car, Star } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const CompareCars = () => {
@@ -31,7 +31,7 @@ const CompareCars = () => {
   if (loading) {
     return (
       <div className="py-20 text-center text-gray-300">
-        Loading <span className="loading-ball loading-xl"></span>
+       <Car className="inline-block fill-yellow-600 animate-spin" size={40} />
       </div>
     );
   }
@@ -42,7 +42,8 @@ const CompareCars = () => {
         initial={{ opacity: 0, x: 30, scale: 0.9 }}
         whileInView={{ opacity: 1, x: 0, scale: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.1 }}
+        transition={{duration: 0.5, delay: 0.1 }}
+        
         className="max-w-6xl mx-auto px-4 text-center"
       >
         <h2 className="text-3xl md:text-4xl font-bold mb-3 text-white heading-text">
@@ -52,10 +53,8 @@ const CompareCars = () => {
           Choose two cars from our collection to see how they compare.
         </p>
 
-       
         <div className="h-[1px] w-32 bg-gradient-to-r from-transparent via-yellow-500 to-transparent mx-auto mb-10"></div>
 
-       
         <div className="flex flex-col sm:flex-row justify-center gap-6 mb-10">
           <select
             className="bg-zinc-800 text-gray-200 border border-zinc-700 rounded-lg p-3 w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all duration-100"
@@ -82,7 +81,6 @@ const CompareCars = () => {
           </select>
         </div>
 
-     
         {car1 && car2 ? (
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -105,7 +103,9 @@ const CompareCars = () => {
                   <h3 className="text-lg md:text-2xl font-bold text-white mb-2">
                     {car.carName}
                   </h3>
-                  <p className="text-gray-400 text-sm md:text-[15px] mb-2">{car.category}</p>
+                  <p className="text-gray-400 text-sm md:text-[15px] mb-2">
+                    {car.category}
+                  </p>
                   <p className="text-green-400 text-sm md:text-[16px] font-semibold mb-2">
                     ৳{car.rentPricePerDay} / day
                   </p>
@@ -123,16 +123,29 @@ const CompareCars = () => {
                     {car.status}
                   </span>
 
-                
                   {car.specs && (
                     <div className="mt-4 text-gray-300 text-sm space-y-1">
-                      <p><strong>Fuel:</strong> {car.specs.fuelType}</p>
-                      <p><strong>Transmission:</strong> {car.specs.transmission}</p>
-                      <p><strong>Engine:</strong> {car.specs.engine}</p>
-                      <p><strong>Seats:</strong> {car.specs.seats}</p>
-                      <p><strong>Mileage:</strong> {car.specs.mileage}</p>
-                      <p><strong>Top Speed:</strong> {car.specs.topSpeed}</p>
-                      <p><strong>Year:</strong> {car.specs.year}</p>
+                      <p>
+                        <strong>Fuel:</strong> {car.specs.fuelType}
+                      </p>
+                      <p>
+                        <strong>Transmission:</strong> {car.specs.transmission}
+                      </p>
+                      <p>
+                        <strong>Engine:</strong> {car.specs.engine}
+                      </p>
+                      <p>
+                        <strong>Seats:</strong> {car.specs.seats}
+                      </p>
+                      <p>
+                        <strong>Mileage:</strong> {car.specs.mileage}
+                      </p>
+                      <p>
+                        <strong>Top Speed:</strong> {car.specs.topSpeed}
+                      </p>
+                      <p>
+                        <strong>Year:</strong> {car.specs.year}
+                      </p>
                     </div>
                   )}
                 </div>
@@ -150,4 +163,3 @@ const CompareCars = () => {
 };
 
 export default CompareCars;
-
