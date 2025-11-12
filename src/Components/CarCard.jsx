@@ -10,7 +10,7 @@ const CarCard = ({car,index}) => {
       }
     return (
           <motion.div
-            // key={car._id || car.carName + index}
+            
             initial={{ opacity: 0, y: 30, scale: 0.95 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true }}
