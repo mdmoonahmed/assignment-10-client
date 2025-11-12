@@ -56,7 +56,7 @@ const SlideContent = ({ slide, isActive }) => {
           href={slide.buttonHref}
           className={`btn-hover ${slide.buttonBg} z-1 group relative overflow-hidden rounded-lg px-6 py-3 text-lg font-semibold transition duration-300 ease-out text-black`}
         >
-          <span className="z-10 relative">{slide.buttonText}</span>
+          <span className="c">{slide.buttonText}</span>
         </motion.a>
       </div>
     </div>

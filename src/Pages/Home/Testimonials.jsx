@@ -33,7 +33,8 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-20 bg-linear-to-b from-zinc-900 to-black text-gray-200">
+    <section className="relative py-20 bg-linear-to-b from-zinc-900 to-black text-gray-200">
+       <div className="absolute top-0 left-0 w-full h-[2px] animate-pulse bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
       <div className="max-w-6xl mx-auto text-center px-4">
         <h2 className="text-4xl font-bold text-white mb-3 heading-text">
           What Our <span className="text-primary">Customers</span> Say

@@ -4,15 +4,12 @@ import {
   Mail,
   MapPin,
   Phone,
-  Twitter,
-  X,
 } from "lucide-react";
 import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   return (
     <footer className="relative bg-gradient-to-b from-zinc-900 to-black text-gray-300 pt-12 pb-6 border-t border-zinc-800">
-      <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
        <div className="absolute top-0 left-0 w-full h-[2px] animate-pulse bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
 
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">

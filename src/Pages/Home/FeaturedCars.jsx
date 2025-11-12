@@ -2,7 +2,8 @@ import { motion } from "framer-motion";
 
 const FeaturedCars = ({ latestCars }) => {
   return (
-    <section className="py-10 md:py-16 bg-linear-to-b from-zinc-900 to-black text-gray-200">
+    <section className="relative py-10 md:py-16 bg-linear-to-b from-zinc-900 to-black text-gray-200">
+       <div className="absolute top-0 left-0 w-full h-[2px] animate-pulse bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
       <div className="text-center mb-6 md:mb-5">
         <h2 className="text-3xl md:text-4xl font-bold text-white heading-text">
           Featured <span className="text-yellow-500">Cars</span>

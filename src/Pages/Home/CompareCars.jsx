@@ -30,14 +30,15 @@ const CompareCars = () => {
 
   if (loading) {
     return (
-      <div className="py-20 text-center text-gray-300">
+      <div className="py-20 text-center">
        <Car className="inline-block fill-yellow-600 animate-spin" size={40} />
       </div>
     );
   }
 
   return (
-    <section className="py-10 md:py-16 bg-gradient-to-b from-zinc-900 to-black text-gray-300">
+    <section className="relative py-10 md:py-16 bg-gradient-to-b from-zinc-900 to-black text-gray-300">
+       <div className="absolute top-0 left-0 w-full h-[2px] animate-pulse bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
       <motion.div
         initial={{ opacity: 0, x: 30, scale: 0.9 }}
         whileInView={{ opacity: 1, x: 0, scale: 1 }}

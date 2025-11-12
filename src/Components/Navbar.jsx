@@ -3,9 +3,12 @@ import { NavLink, useNavigate } from "react-router";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const handleLogo = () => {
-        navigate('/');
+  const handleLogIn = () => {
+      navigate('/login')
   }
+  const handleLogo = () => {
+    navigate("/");
+  };
   const navLinks = (
     <>
       <li>
@@ -50,19 +53,30 @@ const Navbar = () => {
             tabIndex="-1"
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
-           {navLinks}
+            {navLinks}
           </ul>
         </div>
-        <a onClick={handleLogo} className="btn btn-ghost text-xl heading-text">Rent <span className=" italic"><span className="text-primary">W</span>heel</span></a>
+        <a onClick={handleLogo} className="btn btn-ghost text-xl heading-text">
+          Rent{" "}
+          <span className=" italic">
+            <span className="text-primary">W</span>heel
+          </span>
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-         {navLinks}
-        </ul>
+        <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Login</a>
+        <a
+          onClick={handleLogIn}
+          className="btn-hover relative inline-flex items-center justify-center overflow-hidden rounded-lg bg-yellow-500 px-6 py-3 text-base sm:text-lg font-semibold text-black transition-all duration-200 ease-out hover:scale-105 hover:shadow-[0_0_20px_rgba(234,179,8,0.5)] focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-black"
+        >
+          <span className="relative z-10">Login</span>
+
+          <span className="absolute inset-0 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+        </a>
       </div>
+
     </div>
   );
 };
