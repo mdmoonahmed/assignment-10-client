@@ -8,6 +8,7 @@ import BrowseCar from "../Pages/Browse Car/BrowseCar";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Login from "../Pages/Auth/Login";
 import Register from "../Pages/Auth/Register";
+import PrivateRoutes from "./PrivateRoutes";
 
 export const router = createBrowserRouter([
   {
@@ -22,15 +23,21 @@ export const router = createBrowserRouter([
       },
       {
         path: "/add-car",
-        element: <AddCar></AddCar>,
+        element: <PrivateRoutes>
+             <AddCar></AddCar>
+        </PrivateRoutes> ,
       },
       {
         path: "/my-listing",
-        element: <MyLIsting></MyLIsting>,
+        element: <PrivateRoutes>
+            <MyLIsting></MyLIsting>
+        </PrivateRoutes>,
       },
       {
         path: "/my-bookings",
-        element: <MyBookings></MyBookings>,
+        element: <PrivateRoutes>
+            <MyBookings></MyBookings>
+        </PrivateRoutes>,
       },
       {
         path: "/browse-cars",
