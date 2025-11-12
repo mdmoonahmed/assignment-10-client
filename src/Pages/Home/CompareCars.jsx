@@ -38,20 +38,20 @@ const CompareCars = () => {
   }
 
   return (
-    <section className="py-20 ">
+    <section className="py-10 md:py-20 ">
       <motion.div 
           initial={{ opacity: 0, x: 30, scale: 0.9}}
           whileInView={{opacity:1, x:0 , scale: 1 }}
           viewport={{ once: true}}
           transition={{ duration: 0.5 , delay:   0.1}}
       className="max-w-6xl mx-auto px-4 text-center">
-        <h2 className="text-4xl font-bold mb-3 heading-text text-white">Compare <span className="text-primary">Cars</span></h2>
-        <p className="text-secondary mb-10">
+        <h2 className="text-3xl md:text-4xl font-bold mb-3 heading-text text-white">Compare <span className="text-primary">Cars</span></h2>
+        <p className="text-secondary mb-6 md:mb-10">
           Choose two cars from our collection to see how they compare.
         </p>
 
        
-        <div className="flex flex-col sm:flex-row justify-center gap-6 mb-10">
+        <div className="flex flex-row justify-center gap-6 mb-10">
           <select
             className="border bg-base-300 text-white border-gray-300 rounded-lg p-3 w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-red-400"
             onChange={(e) => handleSelect(e.target.value, true)}
@@ -84,7 +84,7 @@ const CompareCars = () => {
           whileInView={{opacity:1, x:0 , scale: 1 }}
           viewport={{ once: true}}
           transition={{ duration: 0.5 , delay:   0.1}}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-10 text-left">
+          className="grid grid-cols-2 gap-5 md:gap-8 mt-10 text-left">
             {[car1, car2].map((car, index) => (
               <div
                 key={index}
@@ -93,21 +93,21 @@ const CompareCars = () => {
                 <img
                   src={car.imageURL}
                   alt={car.carName}
-                  className="w-full h-56 object-cover"
+                  className="w-full h-40 md:h-56 object-cover"
                 />
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-gray-800 mb-2">
+                <div className="p-3 md:p-6">
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-800 md:mb-2">
                     {car.carName}
                   </h3>
-                  <p className="text-gray-500 mb-2">{car.category}</p>
-                  <p className="text-green-600 font-semibold mb-2">
+                  <p className="text-gray-500 text-sm md:text-[16px] mb-2">{car.category}</p>
+                  <p className="text-green-600 text-xs md:text-[16px] font-semibold md:mb-2">
                     ৳{car.rentPricePerDay} / day
                   </p>
-                  <p className="text-yellow-500 mb-2 flex items-center">
+                  <p className="text-yellow-500 text-xs md:text-[16px] md:mb-2 flex items-center">
                     <Star height={18} className="fill-yellow-500"/> {car.rating?.toFixed(1) || "N/A"} / 5
                   </p>
                   <span
-                    className={`inline-block px-3 py-1 text-sm rounded-full ${
+                    className={`inline-block px-3 py-1 text-xs md:text-sm rounded-full ${
                       car.status === "Available"
                         ? "bg-green-100 text-green-600"
                         : "bg-gray-200 text-gray-500"
