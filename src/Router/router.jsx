@@ -20,37 +20,45 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:4000/latest-cars"),
+        loader: () => fetch("https://rent-wheel-nine.vercel.app/latest-cars"),
       },
       {
         path: "/add-car",
-        element: <PrivateRoutes>
-             <AddCar></AddCar>
-        </PrivateRoutes> ,
+        element: (
+          <PrivateRoutes>
+            <AddCar></AddCar>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/my-listing",
-        element: <PrivateRoutes>
+        element: (
+          <PrivateRoutes>
             <MyLIsting></MyLIsting>
-        </PrivateRoutes>,
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/my-bookings",
-        element: <PrivateRoutes>
+        element: (
+          <PrivateRoutes>
             <MyBookings></MyBookings>
-        </PrivateRoutes>,
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/browse-cars",
         element: <BrowseCar></BrowseCar>,
-        loader: () => fetch("http://localhost:4000/cars"),
+        loader: () => fetch("https://rent-wheel-nine.vercel.app/cars"),
       },
       {
         path: "/car-details/:id",
-        element: <PrivateRoutes>
-             <CarDetails></CarDetails>
-        </PrivateRoutes>,
-         loader: () => fetch("http://localhost:4000/cars"),
+        element: (
+          <PrivateRoutes>
+            <CarDetails></CarDetails>
+          </PrivateRoutes>
+        ),
+        loader: () => fetch("https://rent-wheel-nine.vercel.app/cars"),
       },
       {
         path: "/login",

@@ -36,7 +36,7 @@ const AddCar = () => {
     };
 
     try {
-      const res = await fetch("http://localhost:4000/cars", {
+      const res = await fetch("https://rent-wheel-nine.vercel.app/cars", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(carData),

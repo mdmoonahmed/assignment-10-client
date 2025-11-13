@@ -15,7 +15,9 @@ const MyListing = () => {
   const fetchMyCars = async () => {
     if (!user?.email) return;
     try {
-      const res = await fetch(`http://localhost:4000/my-cars?email=${user.email}`);
+      const res = await fetch(
+        `https://rent-wheel-nine.vercel.app/my-cars?email=${user.email}`
+      );
       const data = await res.json();
       setCars(data);
     } catch (error) {
@@ -36,7 +38,7 @@ const MyListing = () => {
     if (!confirm) return;
 
     try {
-      const res = await fetch(`http://localhost:4000/cars/${id}`, {
+      const res = await fetch(`https://rent-wheel-nine.vercel.app/cars/${id}`, {
         method: "DELETE",
       });
       if (res.ok) {
@@ -76,7 +78,9 @@ const MyListing = () => {
         </div>
 
         {loading ? (
-          <p className="text-center text-gray-400 py-20">Loading your cars...</p>
+          <p className="text-center text-gray-400 py-20">
+            Loading your cars...
+          </p>
         ) : cars.length === 0 ? (
           <p className="text-center text-gray-400 py-20">
             You haven’t listed any cars yet.
@@ -90,7 +94,9 @@ const MyListing = () => {
                   <th className="py-3 px-4">Category</th>
                   <th className="py-3 px-4">Rent / Day</th>
                   <th className="py-3 px-4">Status</th>
-                  <th className="py-3 px-4 rounded-tr-lg text-center">Actions</th>
+                  <th className="py-3 px-4 rounded-tr-lg text-center">
+                    Actions
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -103,7 +109,9 @@ const MyListing = () => {
                     transition={{ duration: 0.4, delay: index * 0.05 }}
                     className="border-b border-zinc-700 hover:bg-zinc-800/60 transition"
                   >
-                    <td className="py-4 px-4 font-medium text-white">{car.carName}</td>
+                    <td className="py-4 px-4 font-medium text-white">
+                      {car.carName}
+                    </td>
                     <td className="py-4 px-4 text-gray-400">{car.category}</td>
                     <td className="py-4 px-4 text-green-400 font-semibold">
                       ৳{car.rentPricePerDay}
@@ -144,17 +152,16 @@ const MyListing = () => {
             </table>
           </div>
         )}
-
       </motion.div>
 
-       {/* ✅ Update Modal */}
-        {editingCar && (
-          <UpdateCar
-            carId={editingCar}
-            onClose={() => setEditingCar(null)}
-            onUpdated={fetchMyCars} // ✅ works now because it's defined outside useEffect
-          />
-        )}
+      {/* ✅ Update Modal */}
+      {editingCar && (
+        <UpdateCar
+          carId={editingCar}
+          onClose={() => setEditingCar(null)}
+          onUpdated={fetchMyCars} // ✅ works now because it's defined outside useEffect
+        />
+      )}
     </section>
   );
 };

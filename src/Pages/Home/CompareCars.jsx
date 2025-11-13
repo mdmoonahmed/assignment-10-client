@@ -11,7 +11,7 @@ const CompareCars = () => {
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        const res = await fetch("http://localhost:4000/cars");
+        const res = await fetch("https://rent-wheel-nine.vercel.app/cars");
         const data = await res.json();
         setCars(data);
       } catch (error) {
@@ -31,20 +31,19 @@ const CompareCars = () => {
   if (loading) {
     return (
       <div className="py-20 text-center">
-       <Car className="inline-block fill-yellow-600 animate-spin" size={40} />
+        <Car className="inline-block fill-yellow-600 animate-spin" size={40} />
       </div>
     );
   }
 
   return (
     <section className="relative py-10 md:py-16 bg-gradient-to-b from-zinc-900 to-black text-gray-300">
-       <div className="absolute top-0 left-0 w-full h-[2px] animate-pulse bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
+      <div className="absolute top-0 left-0 w-full h-[2px] animate-pulse bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
       <motion.div
         initial={{ opacity: 0, x: 30, scale: 0.9 }}
         whileInView={{ opacity: 1, x: 0, scale: 1 }}
         viewport={{ once: true }}
-        transition={{duration: 0.5, delay: 0.1 }}
-        
+        transition={{ duration: 0.5, delay: 0.1 }}
         className="max-w-6xl mx-auto px-4 text-center"
       >
         <h2 className="text-3xl md:text-4xl font-bold mb-3 text-white heading-text">

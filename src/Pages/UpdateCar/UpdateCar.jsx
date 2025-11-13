@@ -7,16 +7,16 @@ const UpdateCar = ({ carId, onClose, onUpdated }) => {
   const [carData, setCarData] = useState(null);
 
   const [loading, setLoading] = useState(true);
-  
 
-  
   useEffect(() => {
     const fetchCar = async () => {
       try {
-        const res = await fetch(`http://localhost:4000/cars/${carId}`);
+        const res = await fetch(
+          `https://rent-wheel-nine.vercel.app/cars/${carId}`
+        );
         const data = await res.json();
         // console.log(data.result);
-        
+
         setCarData(data?.result);
       } catch (err) {
         console.error("Error fetching car:", err);
@@ -46,14 +46,16 @@ const UpdateCar = ({ carId, onClose, onUpdated }) => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-          const { _id, ...dataToUpdate} = carData;
+      const { _id, ...dataToUpdate } = carData;
 
-
-      const res = await fetch(`http://localhost:4000/cars/${carId}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(dataToUpdate),
-      });
+      const res = await fetch(
+        `https://rent-wheel-nine.vercel.app/cars/${carId}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(dataToUpdate),
+        }
+      );
 
       if (res.ok) {
         toast.success("Car updated successfully!");
@@ -151,7 +153,9 @@ const UpdateCar = ({ carId, onClose, onUpdated }) => {
               {/* Rent + Location */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm mb-1">Rent Price (per day)</label>
+                  <label className="block text-sm mb-1">
+                    Rent Price (per day)
+                  </label>
                   <input
                     type="number"
                     name="rentPricePerDay"
