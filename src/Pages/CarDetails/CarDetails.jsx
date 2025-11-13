@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { useLoaderData, useNavigate, useParams } from "react-router";
 import { motion } from "framer-motion";
 import {
@@ -8,22 +8,74 @@ import {
   FaChair,
   FaRoad,
 } from "react-icons/fa";
+import { Toaster, toast } from "react-hot-toast";
+import { AuthContext } from "../../Context/AuthContext";
 
 const CarDetails = () => {
   const cars = useLoaderData();
   const navigate = useNavigate();
   const { id } = useParams();
-  console.log(id, cars);
+  const { user } = useContext(AuthContext);
 
-  const car = cars.find((car) => car._id === id);
+  const carData = cars.find((car) => car._id === id);
+  const [car, setCar] = useState(carData);
+  const [loading, setLoading] = useState(false);
+
+  //  Booking handler
+  const handleBooking = async () => {
+
+    setLoading(true);
+
+    const bookingData = {
+      carId: car._id,
+      carName: car.carName,
+      rentPricePerDay: car.rentPricePerDay,
+      userName: user.displayName,
+      userEmail: user.email,
+      bookingDate: new Date().toISOString(),
+      returnDate: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString(), // Example 3 days
+      totalCost: car.rentPricePerDay * 3,
+      status: "Confirmed",
+    };
+
+    try {
+      const res = await fetch("https://rent-wheel-nine.vercel.app/bookings", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(bookingData),
+      });
+
+      if (res.ok) {
+        toast.success("Booking successful! 🎉");
+
+        // Update car status in the DB
+        await fetch(`https://rent-wheel-nine.vercel.app/cars/${car._id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ status: "Unavailable" }),
+        });
+
+        setCar({ ...car, status: "Unavailable" });
+      } else {
+        toast.error("Booking failed, please try again!");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Error during booking!");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <motion.div
-      className="min-h-screen bg-linear-to-r from-black via-transparent to-black text-gray-200 py-10 px-4 md:px-12 lg:px-24"
+      className="min-h-screen bg-gradient-to-r from-black via-zinc-900 to-black text-gray-200 py-10 px-4 md:px-12 lg:px-24"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
+      <Toaster position="top-center" reverseOrder={false} />
+
       <button
         onClick={() => navigate(-1)}
         className="text-yellow-500 hover:text-yellow-400 font-semibold mb-6"
@@ -33,6 +85,7 @@ const CarDetails = () => {
 
       <div className="max-w-6xl mx-auto bg-zinc-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-yellow-500/50 transition-shadow duration-500">
         <div className="grid grid-cols-1 lg:grid-cols-2">
+          {/* Car Image */}
           <motion.div
             className="relative"
             whileHover={{ scale: 1.05 }}
@@ -57,6 +110,7 @@ const CarDetails = () => {
             </span>
           </motion.div>
 
+          {/* Car Info */}
           <div className="p-6 md:p-10 flex flex-col justify-between">
             <div>
               <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
@@ -92,13 +146,21 @@ const CarDetails = () => {
               </div>
             </div>
 
+            {/* Rent & Booking Button */}
             <div className="mt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <p className="text-2xl md:text-3xl font-bold text-green-400">
                 ৳{car.rentPricePerDay} / day
               </p>
+
               {car.status === "Available" ? (
-                <button className="bg-yellow-500 hover:bg-yellow-400 text-black font-bold px-6 py-3 rounded-xl transition-all duration-300">
-                  Book Now
+                <button
+                  onClick={handleBooking}
+                  disabled={loading}
+                  className={`bg-yellow-500 hover:bg-yellow-400 text-black font-bold px-6 py-3 rounded-xl transition-all duration-300 ${
+                    loading ? "opacity-70 cursor-not-allowed" : ""
+                  }`}
+                >
+                  {loading ? "Booking..." : "Book Now"}
                 </button>
               ) : (
                 <button
@@ -110,6 +172,7 @@ const CarDetails = () => {
               )}
             </div>
 
+            {/* Provider Info */}
             <div className="mt-6 border-t border-gray-700 pt-4">
               <h3 className="text-yellow-500 font-semibold text-lg">
                 Provided By
