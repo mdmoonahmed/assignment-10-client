@@ -15,6 +15,10 @@
     font-family: "Inter", sans-serif;
 }
 
+   a, button, .btn {
+    font-family:  "Inter", sans-serif;
+ }
+
 .heading-text{
      font-family: "Montserrat", sans-serif;
      font-weight: bold;

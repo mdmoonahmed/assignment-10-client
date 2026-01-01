@@ -5,6 +5,7 @@ import { useNavigate } from "react-router";
 import "swiper/css";
 import "swiper/css/pagination";
 import SlideContent from "./SlideContent";
+import { Search } from "lucide-react";
 
 const slidesData = [
   {
@@ -51,10 +52,8 @@ const HeroBanner = () => {
         pagination={{ clickable: true }}
         autoplay={{ delay: 4000, disableOnInteraction: false }}
         loop={true}
-        className="h-[60vh] md:h-[85vh]"
-        onSlideChange={(swiper) => {
-          setActiveIndex(swiper.realIndex);
-        }}
+        className="h-[60vh] md:h-[80vh]"
+        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
       >
         {slidesData.map((slide, index) => (
           <SwiperSlide key={index}>
@@ -63,30 +62,30 @@ const HeroBanner = () => {
         ))}
       </Swiper>
 
-      {/* Search Bar */}
-      <div className="absolute z-50 top-40 left-1/2 transform -translate-x-1/2 w-[90%] md:w-[60%] bg-zinc-900/70 backdrop-blur-md border border-yellow-500/40 rounded-2xl shadow-[0_0_20px_rgba(234,179,8,0.3)] p-4">
+      {/* Glowing Responsive Search Bar */}
+      <div className="absolute z-40  top-6 left-1/2 md:left-auto md:right-8 transform md:transform-none -translate-x-1/2 md:translate-x-0 w-[50%] px-4 md:px-0 md:w-auto">
+
         <form
           onSubmit={handleSearch}
-          className="flex flex-col sm:flex-row items-center gap-3"
+          className="mx-auto w-full max-w-xs  md:max-w-lg relative"
         >
           <input
             type="text"
             placeholder="Search car by name..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="flex-1 px-4 py-3 rounded-lg bg-zinc-800 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500 transition-all duration-300"
+            className="w-full shadow-orange-300  pl-12 pr-4 py-2 text-sm md:text-md md:py-3 rounded-lg bg-zinc-900/70 text-gray-200 placeholder-gray-400 focus:outline-none ring-2 ring-yellow-400/60 shadow-md  backdrop-blur-sm transition-all duration-300"
           />
-          <button
-            type="submit"
-            className="bg-yellow-500 hover:bg-yellow-400 text-black font-bold px-6 py-3 rounded-lg transition-all duration-300 w-full sm:w-auto"
-          >
-            Search
-          </button>
+          <Search
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"
+            size={20}
+          />
         </form>
       </div>
+
+
     </div>
   );
 };
 
 export default HeroBanner;
-

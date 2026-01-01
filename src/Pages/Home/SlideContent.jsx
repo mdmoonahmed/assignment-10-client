@@ -17,7 +17,7 @@ const SlideContent = ({ slide, isActive }) => {
   };
 
   return (
-    <div className="relative h-[50vh] md:h-[80vh] overflow-hidden">
+    <div className="relative h-[60vh] md:h-[80vh] overflow-hidden">
       <img
         className="absolute inset-0 w-full h-full object-cover z-0 animate-zoomBg"
         src={slide.imageUrl}
@@ -25,7 +25,7 @@ const SlideContent = ({ slide, isActive }) => {
       />
 
       <div className="absolute inset-0 z-10 bg-black/50 flex flex-col justify-center items-center text-center text-white px-4">
-        <h1 className="text-4xl md:text-6xl font-bold mb-4 heading-text">
+        <h1 className="text-3xl md:text-6xl font-bold  md:mb-4 heading-text">
           {isActive && !hasTyped ? (
             <Typewriter
               words={slide.words}
@@ -45,7 +45,7 @@ const SlideContent = ({ slide, isActive }) => {
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="text-lg md:text-xl mb-6"
+          className="text-sm md:text-xl mb-2 md:mb-6"
         >
           {slide.tagline}
         </motion.p>
@@ -54,9 +54,9 @@ const SlideContent = ({ slide, isActive }) => {
           whileInView={{ opacity: 1 , scale: 1}}
           transition={{ duration: 0.5, delay: 0.5 }}
           href={slide.buttonHref}
-          className={`btn-hover ${slide.buttonBg} z-1 group relative overflow-hidden rounded-lg px-6 py-3 text-lg font-semibold transition duration-300 ease-out text-black`}
+          className={`btn-hover ${slide.buttonBg} z-1 group relative overflow-hidden rounded-lg px-4 md:px-6 py-3  md:text-lg font-semibold  transition duration-300 ease-out text-black`}
         >
-          <span className="c">{slide.buttonText}</span>
+          <span className="">{slide.buttonText}</span>
         </motion.a>
       </div>
     </div>
