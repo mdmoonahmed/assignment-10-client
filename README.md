@@ -4,7 +4,7 @@ RentWheel is a modern, full-stack car rental platform where users can browse, bo
 
 ## Live Website
 
-[https://assignment-10-moon.netlify.app/]
+[https://rentwheel.vercel.app/]
 
 ## Project Purpose
 

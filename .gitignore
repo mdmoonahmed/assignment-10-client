@@ -23,3 +23,5 @@ car.json
 *.njsproj
 *.sln
 *.sw?
+
+.vercel
